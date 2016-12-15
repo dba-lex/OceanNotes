@@ -195,6 +195,15 @@ RMAN> list backup of tablespace system summary;
 RMAN> list backup of datafile {n|'file_name'} summary;
 RMAN> list backup of database by {file|backup};
 RMAN> list copy of database;
+
+list backup of archivelog all;
+list backup of archivelog from scn ...;
+list backup of archivelog until scn ...;
+list backup of archivelog from sequence ..;
+list backup of archivelog until time 'sysdate-10';
+list backup of archivelog {all, from, high, like, logseq, low, scn, sequence, time, until};
+
+list incarnation;
 ```
 
 
