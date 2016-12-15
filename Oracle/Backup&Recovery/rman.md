@@ -80,6 +80,14 @@ RMAN> backup tag='month_full_backup' datafile 1, 2, 3, 4;
 RMAN> backup as copy datafile 15 format '/oradata/newdatafile15.dbf';
 ```
 
+- skip
+
+```
+backup database skip readonly;
+backup database skip offline;
+backup database skip inaccessible;
+backup database ship readonly skip offline ship inaccessible;
+```
 
 - tablespace level
 
