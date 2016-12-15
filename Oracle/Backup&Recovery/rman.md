@@ -221,3 +221,26 @@ V$BACKUP_SPFILE
 V$COPY_CORRUPTION
 V$RMAN_CONFIGURATION
 ```
+
+### 全库备份示例
+
+```
+run{
+allocate channel c1 type disk MAXPIECESIZE 8192M ;
+allocate channel c2 type disk MAXPIECESIZE 8192M ;
+allocate channel c3 type disk MAXPIECESIZE 8192M ;
+allocate channel c4 type disk MAXPIECESIZE 8192M ;
+allocate channel c5 type disk MAXPIECESIZE 8192M ;
+allocate channel c6 type disk MAXPIECESIZE 8192M ;
+sql 'alter system archive log current';
+backup as compressed backupset format '/backup/%d_%T_%p_%s_%u.ful'  database;
+sql 'alter system archive log current';
+
+release channel c1;
+release channel c2;
+release channel c3;
+release channel c4;
+release channel c5;
+release channel c6;
+}
+```
