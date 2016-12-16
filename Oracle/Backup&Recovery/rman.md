@@ -265,6 +265,26 @@ release channel c6;
 ```
 
 
+### validate
+
+```
+run{
+allocate channel c1 type disk ;
+allocate channel c2 type disk ;
+allocate channel c3 type disk ;
+allocate channel c4 type disk ;
+allocate channel c5 type disk ;
+allocate channel c6 type disk ;
+VALIDATE CHECK LOGICAL SKIP INACCESSIBLE DATABASE;
+release channel c1;
+release channel c2;
+release channel c3;
+release channel c4;
+release channel c5;
+release channel c6;
+}
+```
+
 ### block recovery
 
 ```
