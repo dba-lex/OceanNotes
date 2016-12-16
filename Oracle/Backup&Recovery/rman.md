@@ -263,3 +263,29 @@ release channel c5;
 release channel c6;
 }
 ```
+
+
+### block recovery
+
+```
+SQL> select * from v$database_block_corruption;
+```
+
+```
+recover datafile 1 block 100527;
+```
+
+```
+RMAN> RECOVER CORRUPTION LIST;
+
+Starting recover at 24-DEC-09
+using target database control file instead of recovery catalog
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=73 device type=DISK
+finished standby search, restored 2 blocks
+
+starting media recovery
+media recovery complete, elapsed time: 00:00:01
+
+Finished recover at 24-DEC-09
+```
