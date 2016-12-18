@@ -7,6 +7,7 @@
 [oracle@dbalex lib]$ pwd
 /u01/app/oracle/product/10.2.0/rdbms/lib
 [oracle@dbalex lib]$ make -f ins_rdbms.mk BBED=$ORACLE_HOME/bin/bbed $ORACLE_HOME/bin/bbed
+chmod u+x $ORACLE_HOME/bin/bbed
 ```
 
 - 11g
@@ -23,6 +24,7 @@ Copy $ORA10g_HOME/rdbms/mesg/bbedar.msb to $ORA11g_HOME/rdbms/mesg
 [oracle@dbalex lib]$ pwd
 /u01/app/oracle/product/10.2.0/rdbms/lib
 [oracle@dbalex lib]$ make -f ins_rdbms.mk BBED=$ORACLE_HOME/bin/bbed $ORACLE_HOME/bin/bbed
+chmod u+x $ORACLE_HOME/bin/bbed
 ```
 
 BBED的缺省口令为blockedit
@@ -140,6 +142,13 @@ BBED> modify /x 3111afd5 dba 2,1 offset 484
 BBED> modify /x 32891563 dba 2,1 offset 492
 BBED> modify /x 00002a46 dba 2,1 offset 140
 BBED> modify /x 00002a45 dba 2,1 offset 148
+
+如遇到如下报错：
+BBED> modify /x 3111afd5 dba 2,1 484
+BBED-00209: invalid number (3111afd5)
+遇到这种情况，我们两位一起改：
+BBED> modify /x 3111 dba 2,1 484
+BBED> modify /x afd5 dba 2,1 486
 
 BBED> sum dba 2,1 apply
 ```
