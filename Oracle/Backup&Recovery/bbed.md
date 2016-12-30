@@ -102,6 +102,15 @@ a.kscnbas : SCN of last change to the datafile.
 b.kcvcptim : Time of the last change to the datafile.
 c.kcvfhcpc : Checkpoint count.
 d.kcvfhccc : Unknown,but is always 1 less than checkpoint count.
+
+scn：包含kscnbas,kscnwrp
+kcvcptim：最后改变时间
+kcvfhcpc：检查点计数
+kcvfhccc：永远比检查点计数小一
+kcrbaseq：日志序列号     
+kcrbabno：日志块号    
+kcrbabof：
+
 OK,我们的任务就是用modify命令把offline的数据文件头的四个值修改为正常online的数据文件头的对应值。
 ```
 
@@ -139,9 +148,13 @@ BBED> p kcvfhccc
 ub4 kcvfhccc @148 0x00002a45
 
 BBED> modify /x 3111afd5 dba 2,1 offset 484
+BBED> modify /x 0000 dba 2,1 488
 BBED> modify /x 32891563 dba 2,1 offset 492
 BBED> modify /x 00002a46 dba 2,1 offset 140
 BBED> modify /x 00002a45 dba 2,1 offset 148
+BBED> modify /x 000029fd dba 2,1 offset 500
+BBED> modify /x 0000038d dba 2,1 offset 504
+BBED> modify /x 0010 dba 2,1 offset 508
 
 如遇到如下报错：
 BBED> modify /x 3111afd5 dba 2,1 484

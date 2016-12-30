@@ -71,6 +71,7 @@ RMAN> backup database plus archivelog delete all input;
 RMAN> backup incremental level 0 database;
 RMAN> backup incremental level 1 database;
 RMAN> backup incremental level 1 cumulative database;
+RMAN> backup incremental from scn 81850837401 database;
 ```
 
 - datafile level
