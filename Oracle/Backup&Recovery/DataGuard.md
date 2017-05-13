@@ -329,3 +329,11 @@ SQL> ALTER SYSTEM FLUSH REDO TO target_db_name;
 
 这里的target_db_name 是我们在主库的db_unique_name 名称。 也就是在tnsnames.ora 文件配置的。 Flush 会将未发送的redo 从主库传到备库，并且等待redo 在standby 库上apply 之后返回成功。 所以只要Flush成功，那么Failover就没有数据丢失。
 ```
+
+- 处理UNNAME文件
+
+```
+alter database create datafile 'Unnamed datafile' as 'New location';
+alter system set standby_file_management=AUTO;
+alter database recover managed standby database disconnect;
+```
