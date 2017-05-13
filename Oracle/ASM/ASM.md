@@ -1,4 +1,18 @@
 
+- 查看ASM盘
+
+```
+set lines 400
+col group_name for a20
+col MOUNT_STATUS for a10
+col mode_status for a10
+col disk_name for a30
+col path for a50
+col failgroup for a30
+select b.name GROUP_NAME,a.name DISK_NAME,a.failgroup,a.path,a.mount_status,a.mode_status
+from v$asm_disk a,v$asm_diskgroup b where a.group_number = b.group_number order by 2;
+```
+
 - 查看哪个数据库正在使用ASM
 
 ```
