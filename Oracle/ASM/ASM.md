@@ -11,6 +11,8 @@ col path for a50
 col failgroup for a30
 select b.name GROUP_NAME,a.name DISK_NAME,a.failgroup,a.path,a.mount_status,a.mode_status
 from v$asm_disk a,v$asm_diskgroup b where a.group_number = b.group_number order by 2;
+
+select failgroup,name,path,mode_status,mount_status from v$asm_disk;
 ```
 
 - 查看哪个数据库正在使用ASM
