@@ -179,3 +179,17 @@ alter system set remote_listener='gisscan:1523' scope=both sid='+ASM1';
 alter system set remote_listener='gisscan:1523' scope=both sid='+ASM2';
 alter system set remote_listener='gisscan:1523' scope=both sid='+ASM3';
 ```
+
+- 停止vip服务和修改vip（grid用户操作）
+
+```
+srvctl stop listener -n p570a
+srvctl stop listener -n p570b
+srvctl stop vip -n p570a
+srvctl stop vip -n p570b
+srvctl modify nodeapps -n p570a -A 10.76.31.113/255.255.255.0/en0
+srvctl modify nodeapps -n p570b -A 10.76.31.115/255.255.255.0/en0
+srvctl start vip -n p570a
+srvctl start vip -n p570b
+srvctl start listener
+```
