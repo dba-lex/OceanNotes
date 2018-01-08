@@ -77,6 +77,14 @@ col units format a15
 col comments format a25
 select * from v$recovery_progress;
 
+查询GAP：
+Select
+   THREAD#,
+   LOW_SEQUENCE#,
+   HIGH_SEQUENCE#
+From
+   V$ARCHIVE_GAP;
+
 
 在主备库查看standby相关进程的状态：
 set linesize 200
