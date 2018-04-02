@@ -1,4 +1,10 @@
 
+- 会话级别关闭In-Memory查询
+
+```
+alter session set inmemory_query=disable;
+```
+
 - 设置In-Memory内存区大小
 
 ```
