@@ -52,15 +52,15 @@ SELECT   NVL(a.name, '[CANDIDATE]')                   disk_group_name
 ```
 set lines 400
 col path for a60
-SELECT b.path,a.GROUP_KFFXP group_number, count(a.AU_KFFXP) AU_count
+col failgroup for a15
+SELECT  a.GROUP_KFFXP group_number,b.failgroup,b.path,count(a.AU_KFFXP) AU_count
  FROM x$kffxp a, v$asm_disk b, v$asm_alias c
 WHERE a.number_kffxp = c.file_number
   and a.group_kffxp = c.group_number
   AND a.GROUP_KFFXP = b.group_number
   AND a.disk_kffxp = b.disk_number
   AND c.name = upper('&filename')
-group by b.path,a.GROUP_KFFXP
-ORDER BY PATH
+group by a.GROUP_KFFXP,b.failgroup,b.path
 ;
 ```
 
